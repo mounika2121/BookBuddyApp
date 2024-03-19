@@ -2,14 +2,13 @@ import 'package:bookbuddy/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key}); // Use key property in constructor
 
   @override
-  // ignore: library_private_types_in_public_api
-  _LoginPageState createState() => _LoginPageState();
+  LoginPageState createState() => LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -87,11 +86,13 @@ class _LoginPageState extends State<LoginPage> {
                             !(_isUsernameValid && _isPasswordValid);
                       });
                       if (_isUsernameValid && _isPasswordValid) {
-                        // Navigate to home page or perform login action
+                        // Navigate to home page
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomePage(),
+                            builder: (context) => HomePage(
+                              username: _usernameController.text,
+                            ),
                           ),
                         );
                       }
